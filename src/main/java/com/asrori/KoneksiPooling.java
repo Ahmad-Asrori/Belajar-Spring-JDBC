@@ -1,6 +1,6 @@
 package com.asrori;
 
-import com.asrori.Configuration.BeanConfiguration;
+import com.asrori.configuration.BeanConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.sql.DataSource;
