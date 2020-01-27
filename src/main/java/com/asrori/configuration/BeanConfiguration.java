@@ -1,15 +1,20 @@
 package com.asrori.configuration;
 
-import com.asrori.UseJDBCTemplate.dao.AkunDao;
-import com.asrori.UseJDBCTemplate.dao.implementation.AkunDaoImpl;
+import com.asrori.domain.Akun;
+import com.asrori.modelingjdbcjavaobject.AkunByIdQuery;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.jdbc.object.MappingSqlQuery;
 
 import javax.sql.DataSource;
 
 @Configuration
+@ComponentScan("com.asrori")
 public class BeanConfiguration {
 
     /*
@@ -43,10 +48,18 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public AkunDao akunDao(){
-        AkunDaoImpl akunDao = new AkunDaoImpl();
-        akunDao.setJdbcTemplate(jdbcTemplate());
-        return akunDao;
+    public NamedParameterJdbcTemplate namedParameterJdbcTemplate(){
+        return new NamedParameterJdbcTemplate(jdbcTemplate());
     }
 
+    @Bean
+    public SimpleJdbcCall simpleJdbcCall(){
+        return new SimpleJdbcCall(jdbcTemplate());
+    }
+
+    @Bean
+    public MappingSqlQuery<Akun> akunByIdQuery(){
+        AkunByIdQuery akunByIdQuery = new AkunByIdQuery(dataSource());
+        return akunByIdQuery;
+    }
 }

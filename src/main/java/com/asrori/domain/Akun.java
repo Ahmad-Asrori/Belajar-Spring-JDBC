@@ -1,12 +1,12 @@
-package com.asrori.UseJDBCTemplate.dao;
+package com.asrori.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Akun {
     private long id;
     private String nama;
     private double saldo;
-    private Date waktuAkses;
+    private Timestamp waktuAkses;
     private boolean terkunci;
 
     public long getId() {
@@ -33,11 +33,11 @@ public class Akun {
         this.saldo = saldo;
     }
 
-    public Date getWaktuAkses() {
+    public Timestamp getWaktuAkses() {
         return waktuAkses;
     }
 
-    public void setWaktuAkses(Date waktuAkses) {
+    public void setWaktuAkses(Timestamp waktuAkses) {
         this.waktuAkses = waktuAkses;
     }
 

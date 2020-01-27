@@ -17,6 +17,8 @@ public class KoneksiPooling {
         connection.close();
         System.out.println("koneksi ditutup : " + connection.isClosed());
 
+
+
         applicationContext.close();
     }
 }
